@@ -20,7 +20,7 @@ public class Main {
         System.out.println("Correct output: Rmv ll f th vwls");
         System.out.println(VowelRemover("Something"));
         System.out.println(ContainsSubstring("Sentence","ten"));
-        System.out.println(ContainsSubstring("bus","cat"));
+        System.out.println(ContainsSubstring("lanyard","yard"));
         System.out.println("Correct output: true");
         System.out.println(ReverseString("ABCDEF"));
         System.out.println("Correct output: FEDCBA");
@@ -84,22 +84,27 @@ public class Main {
         use .substring()
 
 
-        boolean sub = false;
+
         if(input.indexOf(target) >= 0){
-            sub = true;
-        }
-        return sub;
-
-         */
-        /*int length3 = input.length();
-        String lowerCases = input.toLowerCase();
-        for(int i3 = 0; i3 < length3; i3++) {
-
+            return true;
         }
         return false;
 
          */
+
+        int targetL = target.length();
+        int strL = input.length();
+        int maxLength = strL - targetL;
+        for(int i3 = 0; i3 <= maxLength; i3++) {
+            String portion = input.substring(i3, i3 + targetL);
+            if(portion.equals(target)){
+                return true;
+            }
+        }
         return false;
+
+
+
     }
 
     /**
@@ -108,8 +113,17 @@ public class Main {
      * @return reversed input String
      */
     public static String ReverseString(String input){
+        /*
+        inputL = input.length();
 
-        return "";
+         */
+        String output = "";
+        int inputL = input.length();
+        for(int i4 = inputL - 1; i4 >= 0; i4--){
+            String some = input.substring(i4, i4 + 1);
+            output = output + some;
+        }
+        return output;
     }
 
     /**
@@ -119,6 +133,6 @@ public class Main {
      */
     public static boolean PalindromeChecker(String input){
 
-        return false;
+        return input.equals(ReverseString(input));
     }
 }
